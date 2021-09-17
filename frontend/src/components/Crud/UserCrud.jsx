@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Api from '../../Service/Api'
 import Main from '../template/Main'
 
 
 const headerProps = {
     icon: 'users',
     title: 'Cadastro',
-    subtitle: 'Novo Cadastro Usuário'
+    subtitle: 'Novo Cadastro Contato'
 }
 
 
 // { "id": 1, "name": "lucas neto", "contact": "41-888555", "email": "lucas@neto.com", "url": ""}
 
-const baseUrl = 'https://my-json-server.typicode.com/FabricioHein/alfasolf/contatos'
+const baseUrl = Api
+
+console.log(baseUrl)
 const initialState = {
     user: {
         id: '',

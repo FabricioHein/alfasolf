@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Main from '../template/Main'
+import Api from '../../Service/Api'
+
 
  
 const headerProps = {
     icon: 'users',
-    title: 'Consulta Dados Usuários',
+    title: 'Consulta Dados Contatos',
 }
 
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = Api
+
 const initialState = {
     user: {name: '', email: '' , telefone: '', rg: '', cpf: '', sobrenome: '', cidade: '', estado: '', rua: '', numero: '', complemento: '', cep: '', n_cartao: 'xxxxxxxx', nome_cartao: ''},
     list: []

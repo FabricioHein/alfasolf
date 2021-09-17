@@ -3,8 +3,6 @@ import axios from 'axios'
 import Main from '../template/Main'
 import Api from '../../Service/Api'
 
-
- 
 const headerProps = {
     icon: 'users',
     title: 'Consulta Dados Contatos',
@@ -13,7 +11,13 @@ const headerProps = {
 const baseUrl = Api
 
 const initialState = {
-    user: {name: '', email: '' , telefone: '', rg: '', cpf: '', sobrenome: '', cidade: '', estado: '', rua: '', numero: '', complemento: '', cep: '', n_cartao: 'xxxxxxxx', nome_cartao: ''},
+    user: {
+        id: '',
+        name: '',
+        email: '',
+        contact: '',
+        url: ''
+    },
     list: []
 }
 
@@ -36,16 +40,7 @@ export default class UserShow extends Component {
                         <th>ID</th>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Telefone</th>
-                         <th>RG</th>
-                        <th>sobrenome</th>
-                        <th>cidade</th>
-                        <th>Estado</th>
-                        <th>Numero</th>
-                        <th>Cep</th>
-                        <th>N Cartão</th>
-                        <th>Nome Cartão</th>
-
+                        <th>Contato</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,15 +57,8 @@ export default class UserShow extends Component {
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td>{user.telefone}</td>
-                    <td>{user.rg}</td>
-                    <td>{user.sobrenome}</td>
-                    <td>{user.cidade}</td>
-                    <td>{user.estado}</td>
-                    <td>{user.numero}</td>
-                    <td>{user.cep}</td>
-                    <td>{user.n_cartao}</td>
-                    <td>{user.nome_cartao}</td>
+                    <td>{user.contact}</td>
+                                    
                                       
                 </tr>
             )

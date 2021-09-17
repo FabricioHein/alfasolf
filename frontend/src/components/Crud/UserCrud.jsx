@@ -15,7 +15,6 @@ const headerProps = {
 
 const baseUrl = Api
 
-console.log(baseUrl)
 const initialState = {
     user: {
         id: '',
@@ -45,12 +44,31 @@ export default class UserCrud extends Component {
         const user = this.state.user
         const method = user.id ? 'put' : 'post'
         const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
+
+        
+        this.validation(user) ? 
+        
+        
         axios[method](url, user)
             .then(resp => {
                 const list = this.getUpdatedList(resp.data)
                 this.setState({ user: initialState.user, list })
-            })
+            })                    
+        
+            :
+
+            alert('Há campos em vazios, favor preencher todos os campos')
     }
+    validation(user){
+        const validation = 
+        user.email? true : false
+
+        console.log(validation)
+        
+        return validation
+
+    }
+  
 
     getUpdatedList(user, add = true) {
         const list = this.state.list.filter(u => u.id !== user.id)
@@ -58,11 +76,14 @@ export default class UserCrud extends Component {
         return list
     }
 
-    updateField(event) {
+    updateField(e) {
         const user = { ...this.state.user }
-        user[event.target.name] = event.target.value
+        user[e.target.name] = e.target.value
         this.setState({ user })
+
+
     }
+
 
     renderForm() {
         return (
@@ -91,22 +112,23 @@ export default class UserCrud extends Component {
 
                     <div className="col-12 col-md-6">
                         <div className="form-group">
-                            <label>Sobrenome</label>
+                            <label>Contato</label>
                             <input type="text" className="form-control"
-                                name="sobrenome"
-                                value={this.state.user.sobrenome}
+                                name="contact"
+                                value={this.state.user.contact}
                                 onChange={e => this.updateField(e)}
-                                placeholder="Digite o Sobrenome..." />
+                                placeholder="Digite o contato..." />
+                        </div>
+                        <div className="form-group">
+                            <label>Image</label>
+                            <input type="file" className="form-control"
+                                name="image"
+                                value={this.state.user.url}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o contato..." />
                         </div>
 
-                        <div className="form-group">
-                            <label>CPF</label>
-                            <input type="text" className="form-control"
-                                name="cpf"
-                                value={this.state.user.cpf}
-                                onChange={e => this.updateField(e)}
-                                placeholder="Digite o CPF" />
-                        </div>
+
 
                     </div>
 
@@ -128,6 +150,7 @@ export default class UserCrud extends Component {
                             onClick={e => this.clear(e)}>
                             Cancelar
                         </button>
+                        
                     </div>
                 </div>
             </div>
@@ -144,7 +167,7 @@ export default class UserCrud extends Component {
             this.setState({ list })
         })
     }
-
+   
     renderTable() {
         return (
             <table className="table mt-4">
@@ -153,8 +176,7 @@ export default class UserCrud extends Component {
                         <th>ID</th>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Telefone</th>
-                        <th>Telefone</th>
+                        <th>Contato</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -172,16 +194,21 @@ export default class UserCrud extends Component {
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td>{user.telefone}</td>
+                    <td>{user.contact}</td>
 
                     <td>
                         <button className="btn btn-warning"
-                            onClick={() => this.load(user)}>
+                            onClick={() => this.load(user)}
+                            >
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="btn btn-danger ml-2"
                             onClick={() => this.remove(user)}>
                             <i className="fa fa-trash"></i>
+                        </button>
+                        <button className="btn btn-info ml-2"
+                            onClick={() => this.remove(user)}>
+                            <i className="fa fa-eye"></i>
                         </button>
                     </td>
                 </tr>

@@ -181,7 +181,9 @@ export default class UserCrud extends Component {
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Contato</th>
+                        <th>Image</th>
                         <th>Ações</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -200,7 +202,7 @@ export default class UserCrud extends Component {
                     <td>{user.email}</td>
                     <td>{user.contact}</td>
                     <td>
-                    <img src={user.urlImage} alt="logo" >
+                    <img src={user.urlImage} >
                         </img>
                         
                     </td>
@@ -217,7 +219,7 @@ export default class UserCrud extends Component {
                             <i className="fa fa-trash"></i>
                         </button>
                         <button className="btn btn-info ml-2"
-                            onClick={() => this.remove(user)}>
+                            onClick={() => this.show(user)}>
                             <i className="fa fa-eye"></i>
                         </button>
                     </td>

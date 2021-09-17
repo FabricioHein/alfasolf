@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import axios from 'axios'
 import Api from '../../Service/Api'
 import Main from '../template/Main'
+import '../template/Logo.css'
+
 
 
 const headerProps = {
@@ -9,9 +11,6 @@ const headerProps = {
     title: 'Cadastro',
     subtitle: 'Novo Cadastro Contato'
 }
-
-
-// { "id": 1, "name": "lucas neto", "contact": "41-888555", "email": "lucas@neto.com", "url": ""}
 
 const baseUrl = Api
 
@@ -28,7 +27,7 @@ const initialState = {
 
 export default class UserCrud extends Component {
 
-    state = { ...initialState }
+    state = { ...initialState }    
 
     componentWillMount() {
         axios(baseUrl).then(resp => {
@@ -45,30 +44,30 @@ export default class UserCrud extends Component {
         const method = user.id ? 'put' : 'post'
         const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
 
-        
-        this.validation(user) ? 
-        
-        
-        axios[method](url, user)
-            .then(resp => {
-                const list = this.getUpdatedList(resp.data)
-                this.setState({ user: initialState.user, list })
-            })                    
-        
+
+        this.validation(user) ?
+
+
+            axios[method](url, user)
+                .then(resp => {
+                    const list = this.getUpdatedList(resp.data)
+                    this.setState({ user: initialState.user, list })
+                })
+
             :
 
             alert('Há campos em vazios, favor preencher todos os campos')
     }
-    validation(user){
-        const validation = 
-        user.email? true : false
+    validation(user) {
+        const validation =
+            user.email ? true : false
 
         console.log(validation)
-        
+
         return validation
 
     }
-  
+
 
     getUpdatedList(user, add = true) {
         const list = this.state.list.filter(u => u.id !== user.id)
@@ -121,6 +120,7 @@ export default class UserCrud extends Component {
                         </div>
                         <div className="form-group">
                             <label>Image</label>
+
                             <input type="file" className="form-control"
                                 name="image"
                                 value={this.state.user.url}
@@ -150,7 +150,7 @@ export default class UserCrud extends Component {
                             onClick={e => this.clear(e)}>
                             Cancelar
                         </button>
-                        
+
                     </div>
                 </div>
             </div>
@@ -162,7 +162,10 @@ export default class UserCrud extends Component {
     }
     show(user) {
         this.setState({ user })
-        console.log(user)
+
+       
+
+
     }
 
     remove(user) {
@@ -171,7 +174,7 @@ export default class UserCrud extends Component {
             this.setState({ list })
         })
     }
-   
+
     renderTable() {
         return (
             <table className="table mt-4">
@@ -193,6 +196,7 @@ export default class UserCrud extends Component {
         )
     }
 
+
     renderRows() {
         return this.state.list.map(user => {
             return (
@@ -202,16 +206,16 @@ export default class UserCrud extends Component {
                     <td>{user.email}</td>
                     <td>{user.contact}</td>
                     <td>
-                    <img src={user.urlImage} >
+                        <img className="img" src={user.urlImage} alt='userimage'>
                         </img>
-                        
+
                     </td>
 
 
                     <td>
                         <button className="btn btn-warning"
                             onClick={() => this.load(user)}
-                            >
+                        >
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="btn btn-danger ml-2"

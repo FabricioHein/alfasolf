@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Main from '../template/Main'
 import Api from '../../Service/Api'
+import '../template/Logo.css'
+
 
 const headerProps = {
     icon: 'users',
@@ -41,6 +43,8 @@ export default class UserShow extends Component {
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Contato</th>
+                        <th>Image</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +62,12 @@ export default class UserShow extends Component {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.contact}</td>
+                    <td>
+                        <img className="img" src={user.urlImage} alt='userimage'>
+                        </img>
+
+                    </td>
+
                                     
                                       
                 </tr>

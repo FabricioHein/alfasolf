@@ -9,7 +9,7 @@ const headerProps = {
     subtitle: 'Novo Cadastro Usuário'
 }
 
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'https://my-json-server.typicode.com/FabricioHein/alfasolf/contatos'
 const initialState = {
     user: {name: '', email: '' , telefone: '', rg: '', cpf: '', sobrenome: '', cidade: '', estado: '', rua: '', numero: '', complemento: '', cep: '', n_cartao: 'xxxxxxxx', nome_cartao: ''},
     list: []

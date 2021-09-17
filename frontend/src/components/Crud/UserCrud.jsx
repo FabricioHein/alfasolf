@@ -2,16 +2,25 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Main from '../template/Main'
 
- 
+
 const headerProps = {
     icon: 'users',
     title: 'Cadastro',
     subtitle: 'Novo Cadastro Usuário'
 }
 
+
+// { "id": 1, "name": "lucas neto", "contact": "41-888555", "email": "lucas@neto.com", "url": ""}
+
 const baseUrl = 'https://my-json-server.typicode.com/FabricioHein/alfasolf/contatos'
 const initialState = {
-    user: {name: '', email: '' , telefone: '', rg: '', cpf: '', sobrenome: '', cidade: '', estado: '', rua: '', numero: '', complemento: '', cep: '', n_cartao: 'xxxxxxxx', nome_cartao: ''},
+    user: {
+        id: '',
+        name: '',
+        email: '',
+        contact: '',
+        url: ''
+    },
     list: []
 }
 
@@ -42,7 +51,7 @@ export default class UserCrud extends Component {
 
     getUpdatedList(user, add = true) {
         const list = this.state.list.filter(u => u.id !== user.id)
-        if(add) list.unshift(user)
+        if (add) list.unshift(user)
         return list
     }
 
@@ -97,13 +106,13 @@ export default class UserCrud extends Component {
                         </div>
 
                     </div>
-                   
-         
-                  
-                </div>
-                
 
-                
+
+
+                </div>
+
+
+
                 <hr />
                 <div className="row">
                     <div className="col-12 d-flex justify-content-end">
@@ -142,7 +151,7 @@ export default class UserCrud extends Component {
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Telefone</th>
-                         <th>Telefone</th>
+                        <th>Telefone</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -176,7 +185,7 @@ export default class UserCrud extends Component {
             )
         })
     }
-    
+
     render() {
         return (
             <Main {...headerProps}>

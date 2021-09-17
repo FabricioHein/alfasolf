@@ -1,6 +1,5 @@
 import React from 'react'
 import Main from '../template/Main'
-import Menu from '../home/Menu'
 
 export default props =>
     <Main icon="home" title="Início"
@@ -11,7 +10,6 @@ export default props =>
         <p className="mb-0">Sistema de Gestão de Contatos</p>
 
         <div >
-            <Menu/>
 
 </div>
  

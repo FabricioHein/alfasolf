@@ -5,7 +5,6 @@ import Main from '../template/Main'
 import '../template/Logo.css'
 
 
-
 const headerProps = {
     icon: 'users',
     title: 'Cadastro',

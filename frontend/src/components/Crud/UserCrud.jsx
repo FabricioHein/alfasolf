@@ -160,6 +160,10 @@ export default class UserCrud extends Component {
     load(user) {
         this.setState({ user })
     }
+    show(user) {
+        this.setState({ user })
+        console.log(user)
+    }
 
     remove(user) {
         axios.delete(`${baseUrl}/${user.id}`).then(resp => {
@@ -195,6 +199,12 @@ export default class UserCrud extends Component {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.contact}</td>
+                    <td>
+                    <img src={user.urlImage} alt="logo" >
+                        </img>
+                        
+                    </td>
+
 
                     <td>
                         <button className="btn btn-warning"

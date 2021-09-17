@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import Api from '../../Service/Api'
 import Main from '../template/Main'

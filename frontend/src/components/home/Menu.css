@@ -1,0 +1,16 @@
+aside.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside.menu img {
+    padding: 0px 100px;
+    width: 100%;
+}
+
+@media(max-width: 57px) {
+    aside.menu img {
+        width: 35px;
+    }
+}
